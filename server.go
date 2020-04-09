@@ -16,13 +16,20 @@ func main() {
 	r := gin.Default()
 	r.Use(Cors())
 
-	// user
+	// user_server
 	r.GET("/ping", TestHanlder)
-	r.POST("/register", RegisterUser)
-	r.POST("/login", LoginUser)
-	r.POST("/updateUserMessage", UpdateUserMessage)
-	r.POST("/loadUserMessage", LoadUserMessage)
+	r.POST("/register", Register)
 	r.POST("/certainAccount", CertainAccount)
+	r.POST("/login", Login)
+	r.POST("/getAvatar", GetAvatar)
+	r.POST("/loadUserMessage",LoadUserMessage)
+	r.POST("/updateUserMessage", UpdateUserMessage)
+	r.POST("/createResume", CreateResume)
+	r.POST("/updateResume", UploadResume)
+	r.POST("/deleteResume", DeleteResume)
+	r.POST("/createRecruitment", CreateRecruitment)
+	r.POST("/uploadRecruitment", UploadRecruitment)
+	r.POST("/deleteRecruitment", DeleteRecruitment)
 	r.Run(":18888")
 }
 

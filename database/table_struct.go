@@ -1,63 +1,66 @@
 package database
 
-import "time"
-
-type OaUser struct {
-	Id         int64
+type User struct {
+	Id         int64 `json:"id"`
 	Account    string    `json:"account"`
 	UserName   string    `json:"user_name"`
 	Password   string    `json:"password"`
-	UpdateTime time.Time `json:"update_time"`
-	CreateTime time.Time `json:"create_time"`
-	ThirdId    int64     `json:"third_id"`
 	ImageId    int64     `json:"image_id"`
+	QqNumber 	string `json:"qq_number"`
+	IsPersonnel string `json:"is_personnel"`
+	TelNumber string `json:"tel_number"`
+	Email string `json:"email"`
+}
+type EduEx struct {
+	Id int64 `json:"id"`
+	SchoolName string `json:"school_name"`
+	EduCharacter string `json:"edu_character"`
+	Educational string `json:"educational"`
+	Speciality string `json:"speciality"`
+	StartTime string  `json:"start_time"`
+	EndTime string  `json:"end_time"`
+	SchoolEx string `json:"school_ex"`
+	ResumeId int64 `json:"resume_id"`
 }
 
-type StageRepository struct {
-	Id         int64     `json:"id"`
-	Name       string    `json:"name"`
-	CreatorId  int64     `json:"creator_id"`
-	Authority  int       `json:"authority"`
-	UpdateTime time.Time `json:"update_time"`
-	CreateTime time.Time `json:"create_time"`
-	Status     int       `json:"status"`
+type PersonalInformation struct {
+	Id int64 `json:"id"`
+	Name string `json:"name"`
+	Birthday string `json:"birthday"`
+	Sex string `json:"sex"`
+	Status string `json:"status"`
+	ResumeId int64 `json:"resume_id"`
 }
 
-type FileDetail struct {
-	Id          int64     `json:"id"`
-	CreatorId   int64     `json:"creator_id"`
-	StageRespId int64     `json:"stage_resp_id"`
-	Type        int       `json:"type"`
-	UpdateTime  time.Time `json:"update_time"`
-	CreateTime  time.Time `json:"create_time"`
-	Status      int       `json:"status"`
+type Recruitment struct {
+	Id int64 `json:"id"`
+	Trade string `json:"trade"`
+	Position string `json:"position"`
+	Status string `json:"status"`
+	Location string `json:"location"`
+	Pay string `json:"pay"`
+	NeedSkills string `json:"need_skills"`
+	AboutUs string `json:"about_us"`
 }
 
-type FileText struct {
-	Id         int64     `json:"id"`
-	Name       string    `json:"name"`
-	Content    string    `json:"content"`
-	Status     int       `json:"status"`
-	UpdateTime time.Time `json:"update_time"`
-	CreateTime time.Time `json:"create_time"`
-	FileId     int64     `json:"file_id"`
+type Resume struct {
+	Id int64 `json:"id"`
+	ResumeName string `json:"resume_name"`
+	PersonalSkill string `json:"personal_skill"`
+	PresonalAdvantage string `json:"presonal_information"`
+	Certificate string `json:"certificate"`
+	PersonalAddress string `json:"personal_address"`
+	Recommend string `json:"recommend"`
 }
 
-type FileTable struct {
-	Id         int64     `json:"id"`
-	Name       string    `json:"name"`
-	FileId     int64     `json:"file_id"`
-	Status     string    `json:"status"`
-	RowLen     int64     `json:"row_len"`
-	LineLen    int64     `json:"line_len"`
-	UpdateTime time.Time `json:"update_time"`
-	CreateTime time.Time `json:"create_time"`
-}
-
-type TableCell struct {
-	Id          int64  `json:"id"`
-	FileTableId int64  `json:"file_table_id"`
-	Content     string `json:"content"`
-	Row         int64  `json:"row"`
-	Line        int64  `json:"line"`
+type WorkEx struct {
+	Id int64 `json:"id"`
+	Company string `json:"company"`
+	SubjectRole string `json:"subject_role"`
+	SubjectLink string `json:"subject_link"`
+	StartTime string`json:"start_time"`
+	EndTime string`json:"end_time"`
+	SubjectDescribe string `json:"subject_describe"`
+	OwnAchievement string `json:"own_achievement"`
+	ResumeId int64 `json:"resume_id"`
 }

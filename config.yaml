@@ -1,5 +1,8 @@
 db:
   name: wang
-  addr: 49.235.180.218
-  username: root
+  addr: 118.126.102.61
+  username: wangxingze
   password: 123456
+
+FileServer:
+  Addr: 49.235.180.218:50001
