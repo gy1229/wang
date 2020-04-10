@@ -2,14 +2,24 @@ package user_server
 
 import (
 	"fmt"
-	"github.com/gy1229/oa/json_struct"
-	"github.com/gy1229/oa/test"
+	"github.com/gy1229/wang/json_struct"
+	"github.com/gy1229/wang/test"
 	"testing"
 )
 
 func TestLoadUserMessage(t *testing.T) {
 	test.InitTestConfig2()
-	resp, _ := LoadUserMessage(&json_struct.LoadUserMessageRequest{UserId: "123"})
+	resp, _ := InsertUserMessage(&json_struct.RegisterRequest{UserBase:&json_struct.UserBase{
+		AvatarId:"1",
+		Account:  "wang",
+		Password: "wang",
+	},
+	UserName:"hell",
+	ImageId:"123",
+	QQ:"123",
+	Tel:"32",
+	Email:"wang",
+	})
 	fmt.Println(resp)
 }
 

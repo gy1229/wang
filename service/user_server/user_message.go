@@ -60,12 +60,16 @@ func UpdateUserMessage(req *json_struct.UpdateUserMessageRequest) (*json_struct.
 
 func InsertUserMessage(req *json_struct.RegisterRequest) (*json_struct.RegisterResponse, error) {
 	imageId, _ := strconv.ParseInt(req.ImageId, 10, 64)
+	isP, err := strconv.Atoi(req.UserBase.AvatarId)
+	if err != nil {
+		return nil, err
+	}
 	user := database.User{
 		Id:         util.GenId(),
 		Account:    req.UserBase.Account,
 		UserName:   req.UserName,
 		Password:   req.UserBase.Password,
-		IsPersonnel: req.UserBase.AvatarId,
+		IsPersonnel: isP,
 		ImageId:    imageId,
 		QqNumber:   req.QQ,
 		TelNumber:  req.Tel,
