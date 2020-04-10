@@ -7,7 +7,7 @@ type User struct {
 	Password   string    `json:"password"`
 	ImageId    int64     `json:"image_id"`
 	QqNumber 	string `json:"qq_number"`
-	IsPersonnel string `json:"is_personnel"`
+	IsPersonnel int `json:"is_personnel"`
 	TelNumber string `json:"tel_number"`
 	Email string `json:"email"`
 }

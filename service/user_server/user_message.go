@@ -37,10 +37,14 @@ func LoadUserMessage(req *json_struct.LoadUserMessageRequest) (*json_struct.Load
 }
 
 func UpdateUserMessage(req *json_struct.UpdateUserMessageRequest) (*json_struct.UpdateUserMessageResponse, error) {
+	isP, err := strconv.Atoi(req.UserBase.AvatarId)
+	if err != nil {
+		return nil, err
+	}
 	user := database.User{
 		Password: req.UserBase.Password,
 		UserName: req.UserName,
-		IsPersonnel: req.UserBase.AvatarId,
+		IsPersonnel: isP,
 		QqNumber:   req.QQ,
 		TelNumber:  req.Tel,
 		Email: req.Email,
