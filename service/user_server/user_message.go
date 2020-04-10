@@ -37,7 +37,7 @@ func LoadUserMessage(req *json_struct.LoadUserMessageRequest) (*json_struct.Load
 }
 
 func UpdateUserMessage(req *json_struct.UpdateUserMessageRequest) (*json_struct.UpdateUserMessageResponse, error) {
-	isP, err := strconv.Atoi(req.UserBase.AvatarId)
+	isP, err := strconv.Atoi(req.UserBase.IsPersonal)
 	if err != nil {
 		return nil, err
 	}
@@ -60,7 +60,7 @@ func UpdateUserMessage(req *json_struct.UpdateUserMessageRequest) (*json_struct.
 
 func InsertUserMessage(req *json_struct.RegisterRequest) (*json_struct.RegisterResponse, error) {
 	imageId, _ := strconv.ParseInt(req.ImageId, 10, 64)
-	isP, err := strconv.Atoi(req.UserBase.AvatarId)
+	isP, err := strconv.Atoi(req.UserBase.IsPersonal)
 	if err != nil {
 		return nil, err
 	}

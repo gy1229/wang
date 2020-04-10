@@ -1,9 +1,9 @@
 package json_struct
 
 type UserBase struct {
-	Account  string `json:"account"  binding:"required"`
-	Password string `json:"password"  binding:"required"`
-	AvatarId string `json:"avatar_id"`
+	Account    string `json:"account"  binding:"required"`
+	Password   string `json:"password"  binding:"required"`
+	IsPersonal string `json:"is_personal"`
 }
 
 type RegisterRequest struct {

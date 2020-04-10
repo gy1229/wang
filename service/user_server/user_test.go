@@ -10,9 +10,9 @@ import (
 func TestLoadUserMessage(t *testing.T) {
 	test.InitTestConfig2()
 	resp, _ := InsertUserMessage(&json_struct.RegisterRequest{UserBase:&json_struct.UserBase{
-		AvatarId:"1",
-		Account:  "wang",
-		Password: "wang",
+		IsPersonal: "1",
+		Account:    "wang",
+		Password:   "wang",
 	},
 	UserName:"hell",
 	ImageId:"123",
