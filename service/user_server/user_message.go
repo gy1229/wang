@@ -101,6 +101,7 @@ func LoginUser(req *json_struct.LoginRequest) (*json_struct.LoginResponse, error
 		return &json_struct.LoginResponse{
 			UserId: strconv.FormatInt(user.Id, 10),
 			ImageId: strconv.FormatInt(user.ImageId, 10),
+			IsPersonal: strconv.Itoa(user.IsPersonnel),
 			Base:   &json_struct.BaseResponse{Body: constant.SUCCESS},
 		}, nil
 	}
