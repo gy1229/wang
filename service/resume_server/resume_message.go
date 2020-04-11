@@ -125,7 +125,7 @@ func UploadResume(req *json_struct.UploadResumeRequest) (*json_struct.UploadResu
 		Id:                resumeId,
 		ResumeName:        req.ResumeId,
 		PersonalSkill:     req.PersonalSkill,
-		PresonalAdvantage: req.PersonalAdvantage,
+		PersonalAdvantage: req.PersonalAdvantage,
 		Certificate:       req.Certificate,
 		PersonalAddress:   req.PersonalAddress,
 		Recommend:         req.Recommend,
