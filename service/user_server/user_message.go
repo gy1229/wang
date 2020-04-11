@@ -75,7 +75,7 @@ func InsertUserMessage(req *json_struct.RegisterRequest) (*json_struct.RegisterR
 		TelNumber:  req.Tel,
 		Email: req.Email,
 	}
-	if err := DB.Create(user).Error; err != nil {
+	if err := database.DB.Create(user).Error; err != nil {
 		logrus.Error("InsertUserMessage err ", err.Error())
 		return nil, err
 	}
@@ -88,7 +88,7 @@ func LoginUser(req *json_struct.LoginRequest) (*json_struct.LoginResponse, error
 	user := database.User{
 		Account: req.UserBase.Account,
 	}
-	if err := DB.Model(&user).Where("account = ?", user.Account).Find(&user).Error; err != nil {
+	if err := database.DB.Model(&user).Where("account = ?", user.Account).Find(&user).Error; err != nil {
 		if err == gorm.ErrRecordNotFound {
 			return &json_struct.LoginResponse{
 				Base: &json_struct.BaseResponse{Body: constant.LoginFailAccount},

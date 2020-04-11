@@ -1,7 +1,6 @@
 package database
 
 import (
-	"github.com/gy1229/oa/database"
 	"github.com/jinzhu/gorm"
 	"github.com/sirupsen/logrus"
 )
