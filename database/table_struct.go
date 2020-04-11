@@ -47,7 +47,7 @@ type Resume struct {
 	Id int64 `json:"id"`
 	ResumeName string `json:"resume_name"`
 	PersonalSkill string `json:"personal_skill"`
-	PresonalAdvantage string `json:"presonal_information"`
+	PersonalAdvantage string `json:"personal_information"`
 	Certificate string `json:"certificate"`
 	PersonalAddress string `json:"personal_address"`
 	Recommend string `json:"recommend"`
