@@ -18,7 +18,7 @@ func LoadUserMessage(req *json_struct.LoadUserMessageRequest) (*json_struct.Load
 		logrus.Error("LoadUserMessage err ", err.Error())
 		return nil, err
 	}
-	if err := database.DB.Where("id = ?", userId).First(&user).Error; err != nil {
+	if err := DB.Where("id = ?", userId).First(&user).Error; err != nil {
 		logrus.Error("LoadUserMessage err ", err.Error())
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func UpdateUserMessage(req *json_struct.UpdateUserMessageRequest) (*json_struct.
 		TelNumber:  req.Tel,
 		Email: req.Email,
 	}
-	if err := database.DB.Model(&user).Where("account = ?", req.UserBase.Account).Updates(user).Error; err != nil {
+	if err := DB.Model(&user).Where("account = ?", req.UserBase.Account).Updates(user).Error; err != nil {
 		logrus.Error("UpdateUserMessage err ", err.Error())
 		return nil, err
 	}
@@ -75,7 +75,7 @@ func InsertUserMessage(req *json_struct.RegisterRequest) (*json_struct.RegisterR
 		TelNumber:  req.Tel,
 		Email: req.Email,
 	}
-	if err := database.DB.Create(user).Error; err != nil {
+	if err := DB.Create(user).Error; err != nil {
 		logrus.Error("InsertUserMessage err ", err.Error())
 		return nil, err
 	}
@@ -88,7 +88,7 @@ func LoginUser(req *json_struct.LoginRequest) (*json_struct.LoginResponse, error
 	user := database.User{
 		Account: req.UserBase.Account,
 	}
-	if err := database.DB.Model(&user).Where("account = ?", user.Account).Find(&user).Error; err != nil {
+	if err := DB.Model(&user).Where("account = ?", user.Account).Find(&user).Error; err != nil {
 		if err == gorm.ErrRecordNotFound {
 			return &json_struct.LoginResponse{
 				Base: &json_struct.BaseResponse{Body: constant.LoginFailAccount},
@@ -114,7 +114,7 @@ func CertainAccount(req *json_struct.CertainAccountRequest) (*json_struct.Certai
 	user := database.User{
 		Account: req.Account,
 	}
-	if err := database.DB.Model(&user).Where("account = ?", user.Account).Find(&user).Error; err != nil {
+	if err := DB.Model(&user).Where("account = ?", user.Account).Find(&user).Error; err != nil {
 		if err == gorm.ErrRecordNotFound {
 			return &json_struct.CertainAccountResponse{
 				Base: &json_struct.BaseResponse{Body: constant.SUCCESS},

@@ -1,13 +1,12 @@
 package database
 
 import (
-	"github.com/gy1229/oa/database"
 	"github.com/jinzhu/gorm"
 	"github.com/sirupsen/logrus"
 )
 
 func CreateEduEx(eduEx *EduEx) error {
-	if err := database.DB.Create(eduEx).Error; err != nil {
+	if err := DB.Create(eduEx).Error; err != nil {
 		logrus.Error("CreateEduEx err ", err.Error())
 		return err
 	}
@@ -15,7 +14,7 @@ func CreateEduEx(eduEx *EduEx) error {
 }
 
 func UpdateEduEx(eduEx *EduEx) error {
-	if err := database.DB.Model(&eduEx).Where("id = ?", eduEx.Id).Updates(eduEx).Error; err != nil {
+	if err := DB.Model(&eduEx).Where("id = ?", eduEx.Id).Updates(eduEx).Error; err != nil {
 		logrus.Error("UpdateEduEx err ", err.Error())
 		return err
 	}
@@ -23,7 +22,7 @@ func UpdateEduEx(eduEx *EduEx) error {
 }
 
 func DeletEduEx(eduEx *EduEx) error {
-	if err := database.DB.Delete(eduEx).Error; err != nil {
+	if err := DB.Delete(eduEx).Error; err != nil {
 		logrus.Error("DeletEduEx err ", err.Error())
 		return err
 	}
@@ -31,7 +30,7 @@ func DeletEduEx(eduEx *EduEx) error {
 }
 
 func FindEduEx(eduEx *EduEx) error {
-	if err := database.DB.Where("id = ?", eduEx.Id).First(&eduEx).Error; err != nil {
+	if err := DB.Where("id = ?", eduEx.Id).First(&eduEx).Error; err != nil {
 		logrus.Error("FindEduEx err ", err.Error())
 		return err
 	}
@@ -40,7 +39,7 @@ func FindEduEx(eduEx *EduEx) error {
 
 func FindEduExByResumeId(resumeId *int64) ([]*EduEx, error) {
 	eduEx := make([]*EduEx, 0)
-	if err := database.DB.Model(&eduEx).Where("resume_id = ?", resumeId).Find(&eduEx).Error; err != nil {
+	if err := DB.Model(&eduEx).Where("resume_id = ?", resumeId).Find(&eduEx).Error; err != nil {
 		if err == gorm.ErrRecordNotFound {
 			return eduEx, nil
 		}

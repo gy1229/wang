@@ -1,13 +1,12 @@
 package database
 
 import (
-	"github.com/gy1229/oa/database"
 	"github.com/jinzhu/gorm"
 	"github.com/sirupsen/logrus"
 )
 
 func CreatePersonalInfo(p *PersonalInformation) error {
-	if err := database.DB.Create(p).Error; err != nil {
+	if err := DB.Create(p).Error; err != nil {
 		logrus.Error("CreateEduEx err ", err.Error())
 		return err
 	}
@@ -15,7 +14,7 @@ func CreatePersonalInfo(p *PersonalInformation) error {
 }
 
 func UpdatePersonalInfo(p *PersonalInformation) error {
-	if err := database.DB.Model(&p).Where("id = ?", p.Id).Updates(p).Error; err != nil {
+	if err := DB.Model(&p).Where("id = ?", p.Id).Updates(p).Error; err != nil {
 		logrus.Error("UpdateUserMessage err ", err.Error())
 		return err
 	}
@@ -23,7 +22,7 @@ func UpdatePersonalInfo(p *PersonalInformation) error {
 }
 
 func DeletPersonalInfo(p *PersonalInformation) error {
-	if err := database.DB.Delete(p).Error; err != nil {
+	if err := DB.Delete(p).Error; err != nil {
 		logrus.Error("DeletEduEx err ", err.Error())
 		return err
 	}
@@ -31,7 +30,7 @@ func DeletPersonalInfo(p *PersonalInformation) error {
 }
 
 func FindPersonalInfo(p *PersonalInformation) error {
-	if err := database.DB.Where("id = ?", p.Id).First(&p).Error; err != nil {
+	if err := DB.Where("id = ?", p.Id).First(&p).Error; err != nil {
 		logrus.Error("LoadUserMessage err ", err.Error())
 		return err
 	}
@@ -40,7 +39,7 @@ func FindPersonalInfo(p *PersonalInformation) error {
 
 func FindPersonalInfoByResumeId(resumeId *int64)  ([]*PersonalInformation, error) {
 	p := make([]*PersonalInformation, 0)
-	if err := database.DB.Model(&p).Where("resume_id = ?", resumeId).Find(&p).Error; err != nil {
+	if err := DB.Model(&p).Where("resume_id = ?", resumeId).Find(&p).Error; err != nil {
 		if err == gorm.ErrRecordNotFound {
 			return p, nil
 		}

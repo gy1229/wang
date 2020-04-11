@@ -6,7 +6,7 @@ import (
 )
 
 func CreateRecruitment(r *Recruitment) error {
-	if err := database.DB.Create(r).Error; err != nil {
+	if err := DB.Create(r).Error; err != nil {
 		logrus.Error("CreateEduEx err ", err.Error())
 		return err
 	}
@@ -14,7 +14,7 @@ func CreateRecruitment(r *Recruitment) error {
 }
 
 func UpdateRecruitment(r *Recruitment) error {
-	if err := database.DB.Model(&r).Where("id = ?", r.Id).Updates(r).Error; err != nil {
+	if err := DB.Model(&r).Where("id = ?", r.Id).Updates(r).Error; err != nil {
 		logrus.Error("UpdateUserMessage err ", err.Error())
 		return err
 	}
@@ -22,7 +22,7 @@ func UpdateRecruitment(r *Recruitment) error {
 }
 
 func DeleteRecruitment(r *Recruitment) error {
-	if err := database.DB.Delete(r).Error; err != nil {
+	if err := DB.Delete(r).Error; err != nil {
 		logrus.Error("DeletEduEx err ", err.Error())
 		return err
 	}
@@ -30,14 +30,14 @@ func DeleteRecruitment(r *Recruitment) error {
 }
 
 func DeleteRecruitById(id *int64) error {
-	if err := database.DB.Where("id = ?", id).Delete(Recruitment{}).Error; err != nil {
+	if err := DB.Where("id = ?", id).Delete(Recruitment{}).Error; err != nil {
 		return err
 	}
 	return nil
 }
 
 func FindRecruitment(r *Recruitment) error {
-	if err := database.DB.Where("id = ?", r.Id).First(&r).Error; err != nil {
+	if err := DB.Where("id = ?", r.Id).First(&r).Error; err != nil {
 		logrus.Error("LoadUserMessage err ", err.Error())
 		return err
 	}
